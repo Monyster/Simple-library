@@ -1,0 +1,36 @@
+{% extends 'main.twig' %}
+
+
+{% block main %}
+    <div class="row justify-content-center">
+        <h1>{{ book.title }}</h1>
+        <div class="col-3">
+            <br>Авторы:
+            {% for author in book.authors %}
+            <br>- {{ author }}
+            {% endfor %}
+            <br>Год - {{ book.year }}
+            <br>
+            <td id='offer'>
+                <button onclick="incOffer()" class="btn-lg btn btn-success">Хочу читать!</button>
+                <script>
+                    function incOffer() {
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.open("GET", "/books/incOffer?bookId={{ book.id }}", false);
+                        xhttp.send();
+                    }
+                </script>
+            </td>
+            <br>
+
+        </div>
+        <div class="col-3">
+            <br>Описание:
+            <br>{{ book.description }}
+        </div>
+        <div class="col-3">
+            <br><img src="upload/{{ book.image }}" class="book-cover"
+                     alt="{{ book.title }}">
+        </div>
+    </div>
+{% endblock %}

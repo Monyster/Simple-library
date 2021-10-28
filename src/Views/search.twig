@@ -1,0 +1,9 @@
+{% extends 'main.twig' %}
+
+{% block main %}
+    <div class="container">
+        <div class="row row-cols-5 g-2 g-lg-3">
+            {% include 'sections/book_preview.twig' with books %}
+        </div>
+    </div>
+{% endblock %}

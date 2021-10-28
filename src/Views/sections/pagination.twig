@@ -1,0 +1,11 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        {% for i in 1..pagination %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>
+
+

@@ -1,0 +1,12 @@
+{% for book in books %}
+
+    <div class="col">
+        <div class="p-3 border bg-light">
+            <img src="upload/{{ book.image }}" class="book-cover_preview" alt="">
+            <a href="books?bookId={{ book.id }}">
+                <br>{{ book.title }}
+            </a>
+        </div>
+    </div>
+
+{% endfor %}

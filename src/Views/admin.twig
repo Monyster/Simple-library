@@ -1,0 +1,85 @@
+{% extends 'main.twig' %}
+
+{% block main %}
+    <div class="row">
+        <h1>BIBLIOTEKA</h1>
+        <div class="col-5">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Название</th>
+                    <th scope="col">Автор</th>
+                    <th scope="col">Посещений</th>
+                    <th scope="col">Хотений</th>
+                </tr>
+                </thead>
+
+                <tbody>{% for book in books %}
+                <tr>
+                    <th scope="row">
+                        <a href="http://back.loc/books/{{ book.id }}">{{ book.title }}</a>
+                    </th>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.visit_C }}</td>
+                    <td>{{ book.offer_C }}</td>
+                    <td>
+                        <button onclick="deleteBook({{ book.id }})" type="submit">удалить</button>
+                        <script>
+                            function deleteBook(id) {
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.open("GET", "/admin/delete?bookId=" + id, false);
+                                xhttp.send();
+                            }
+                        </script>
+                    </td>
+                </tr>
+
+                </tbody>{% endfor %}
+            </table>
+            <br>
+             {% include 'sections/admin/pagination.twig' %}
+        </div>
+
+        <div class="col-7">
+            <h1>Добавить новую книгу</h1>
+            <form action="http://back.loc/admin/addBook" method="POST" enctype="multipart/form-data">
+
+                <div class="mb-3">
+                    <label for="bookTitle" class="form-label">Название книги</label>
+                    <input type="text" name="bookTitle" class="form-control" id="bookTitle">
+                </div>
+
+                <div class="mb-3">
+                    <label for="bookAuthor" class="form-label">Имя автора</label>
+                    <input type="text" name="bookAuthor1" class="form-control" id="bookAuthor" placeholder="Автор 1"
+                           aria-describedby="bookAuthorHelp">
+                    <input type="text" name="bookAuthor2" class="form-control" id="bookAuthor" placeholder="Автор 2"
+                           aria-describedby="bookAuthorHelp">
+                    <input type="text" name="bookAuthor3" class="form-control" id="bookAuthor" placeholder="Автор 3"
+                           aria-describedby="bookAuthorHelp">
+                    <div id="bookAuthorHelp" class="form-text">*оставьте поля пустыми если авторов < 3</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="bookYear" class="form-label">Год</label>
+                    <input type="text" name="bookYear" class="form-control" id="bookYear">
+                </div>
+
+                <div class="mb-3">
+                    <label for="bookDescription" class="form-label">Описание</label>
+                    <textarea class="form-control" name="bookDescription" id="bookDescription" rows="3"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="bookCover" class="form-label">Обложка книги</label>
+
+                    <input class="form-control" name="bookCover" type="file" id="bookCover">
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

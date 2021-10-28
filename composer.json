@@ -1,0 +1,23 @@
+{
+  "name": "monyster/back.loc",
+  "description": "Library on PHP and MySQL",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "src\\": "src"
+    }
+  },
+  "authors": [
+    {
+      "name": "John Smith",
+      "email": "john@example.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "slim/slim": "4.*",
+    "slim/psr7": "^1.4",
+    "twig/twig": "^3.0",
+    "ext-pdo": "*"
+  }
+}
