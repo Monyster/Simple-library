@@ -7,7 +7,12 @@ Requires:
 
 Getting Started:
    - clone the repository
+   - install all from composer.json
    - create DB
    - fill /config/database.php
    - run migrations /scripts/migrate.php
    - add /scripts/softDelete.php and /scripts/DB_dump_script in cron list
+   
+Admin:
+   - Login: adminka
+   - Password: without password
