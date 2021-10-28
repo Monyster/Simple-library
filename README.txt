@@ -13,6 +13,6 @@ Getting Started:
    - run migrations /scripts/migrate.php
    - add /scripts/softDelete.php and /scripts/DB_dump_script in cron list
    
-Admin panel:
+Admin page:
    - Login: adminka
    - Password: without password
